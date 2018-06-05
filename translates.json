@@ -1,0 +1,16 @@
+{
+    "en": {
+        "translations": {
+            "TEST": "quit",
+            "BETSLIP.BET.MIN": "Min bet",
+            "BETSLIP.ERRORS.NOT_ENOUGH_MONEY": "Not enough funds on your account. Please add funds or select a lower stake.",
+            "BETSLIP.ERRORS.SYSTEM_TOO_LESS": "System must have at least three bets"
+        }
+    },
+    "ru": {
+        "translations": {}
+    },
+    "uk": {
+        "translations": {}
+    }
+}
