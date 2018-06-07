@@ -9,6 +9,8 @@ const languages = Object.keys(translate);
 const wordsKeys = Object.keys(translate[defaultLang].translations).sort();
 const [en, ...restLanguages] = languages
 
+const output = { ...translate }
+
 function getTranslate(str, lang, cb) {
     googleTranslate(str, { from: defaultLang, to: lang }).then(({ text }) => {
         cb(text)
@@ -18,7 +20,7 @@ function getTranslate(str, lang, cb) {
 }
 
 function setTraslate(lang, wordsKey, translated, last) {
-    translate[lang].translations[wordsKey] = translated;
+    output[lang].translations[wordsKey] = translated;
 }
 
 restLanguages.forEach(lang => {
@@ -40,7 +42,7 @@ restLanguages.forEach(lang => {
 
 
 setTimeout(() => {
-    write(translate);
+    write(output);
 }, 1000)
 
 function ksort(src) {
@@ -62,7 +64,7 @@ function toOrder(obj) {
 function write(trans) {
 
     // const data = JSON.stringify(toOrder(trans), (k, v) => ((v === undefined || v === '"undefined"') ? '""' : v), 4)
-
+    fs.unlinkSync("./output.json");
     fs.writeFile("output.json", JSON.stringify(toOrder(trans), null, 4), (err) => {
         if (err) {
             console.error(err);
